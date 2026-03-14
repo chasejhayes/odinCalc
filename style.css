@@ -1,3 +1,12 @@
-#test{
-    background-color: blueviolet;
+div{
+    display: flex;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    background-color: aqua;
 }
