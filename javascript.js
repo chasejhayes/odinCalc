@@ -140,24 +140,17 @@ const operate = function (firstNumber, secondNumber, operator) {
     if (operator == "+") {
         return jsResult.textContent = add(firstNumber, secondNumber)
     } else if (operator == "-") {
-        subtract(firstNumber, secondNumber)
-    } else if (operator == "*") {
-        multiply(firstNumber, secondNumber)
+        jsResult.textContent = subtract(firstNumber, secondNumber)
+    } else if (operator == "x") {
+        jsResult.textContent= multiply(firstNumber, secondNumber)
     } else if (operator == "/") {
-        divide(firstNumber, secondNumber)
+        jsResult.textContent= divide(firstNumber, secondNumber)
     }
 
 }
 
-// const solution = document.getElementById("equals");
-// solution.addEventListener("click", operate(initialNumber, secondaryNumber, operator))
-
-// operate(initialNumber, secondaryNumber, operator)
-
-
-
-
-
-
+// problems:
+// can only imput 1 digit numbers
+// second digit doesn't appear when any number other than 1 is pressed
 
 
