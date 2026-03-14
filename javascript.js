@@ -22,30 +22,6 @@ let secondaryNumber = "__";
 let operator = "__";
 let result;
 
-// let one = "one";
-// let two = "two"
-// let three = "three"
-// let four = "four"
-// let five = "five";
-// let six = "six";
-// let seven = "seven";
-// let eight = "eight";
-// let nine = "nine";
-// let zero = "zero"
-
-// const numbers = {
-//     one: 1,
-//     two: 2,
-//     three: 3,
-//     four: 4,
-//     five: 5,
-//     six: 6,
-//     seven: 7,
-//     eight: 8,
-//     nine: 9,
-//     zero: 0,
-// }
-
 let one = 1;
 let two = 2;
 let three = 3;
@@ -89,7 +65,7 @@ jsResult.textContent = result;
 
 
 // click operator functions and value storage
-
+// TO DO: consolidate like numbers functions
 let plusSign = "+"
 let minusSign = "-"
 let multiplySign = "x"
@@ -129,23 +105,19 @@ function initialClick(value){
     return jsInitialNumber.textContent = numbers[value];
 
 }
-
 function secondaryClick(value){
     if (initialNumber == true){
         return jsSecondaryNumber.textContent = numbers[value];
     } 
 }
-
 function storeInitialNumberValues(value){
     initialNumber = value
     console.log(initialNumber)
 }
-
 function storeSecondaryNumberValues(value){
     secondaryNumber = value;
     console.log(secondaryNumber)
 }
-
 let clickCount = 0;
 function bigClick(value){
     clickCount++
@@ -166,7 +138,7 @@ function bigClick(value){
 // decides which math function to execute based on input
 const operate = function (firstNumber, secondNumber, operator) {
     if (operator == "+") {
-        add(firstNumber, secondNumber)
+        return jsResult.textContent = add(firstNumber, secondNumber)
     } else if (operator == "-") {
         subtract(firstNumber, secondNumber)
     } else if (operator == "*") {
@@ -177,6 +149,10 @@ const operate = function (firstNumber, secondNumber, operator) {
 
 }
 
+// const solution = document.getElementById("equals");
+// solution.addEventListener("click", operate(initialNumber, secondaryNumber, operator))
+
+// operate(initialNumber, secondaryNumber, operator)
 
 
 
