@@ -10,3 +10,7 @@ div{
 button{
     background-color: aqua;
 }
+
+#display{
+    gap: 10px;
+}
