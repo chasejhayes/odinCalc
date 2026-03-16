@@ -15,6 +15,7 @@ const divide = function (a, b) {
 }
 
 // decides which math function to execute based on operator, takes firstNumber and secondNumber as arguments
+// returns result as text content
 const operate = function (firstNumber, secondNumber, operator) {
     if (operator == "+") {
         return jsResult.textContent = add(firstNumber, secondNumber)
@@ -27,6 +28,35 @@ const operate = function (firstNumber, secondNumber, operator) {
     }
 
 }
+
+// onClick event assigned to operator
+// on first press - when op1 is still undefined - assigns the initialNumArr into a Number stored in initialNum; is ignored when pressed again
+// assigns the selected operator to value op1 (makes getFirstNum() stop working)
+// if the secondNumArr is defined, join into a number and assign to secondNum
+// if both are defined perform the operation function and assign result to initialNum
+// set the second number array to 0 so it can be filled again
+
+function operationPressed(operator) {
+    if (op1 == undefined) {
+        initialNum = Number(initialNumArr.join(""));
+        console.log(initialNum);
+        op1 = operator;
+    }
+    op2 = operator;
+    if (secondNumArr.length > 0) {
+        secondNum = Number(secondNumArr.join(""))
+        console.log(secondNum)
+    }
+    if (initialNum && secondNum) {
+        initialNum = operate(initialNum, secondNum, op1);
+        secondNumArr.length = 0;
+        console.log(initialNum)
+    }
+    op1 = op2;
+}
+
+// the bug:
+// 
 
 // used in onClick to select an operator
 let plusSign = "+"
@@ -50,74 +80,60 @@ let initialNumArr = [];
 let secondNumArr = [];
 let initialNum;
 let secondNum;
-let op;
+let op1;
+let op2;
 
 
-
-function firstClick(value) {
-    if (op == undefined) {
+// onClick event assigned to all numbers
+// does not work if operator is assigned
+// puts all numbers clicked into initialNumArr
+function getFirstNum(value) {
+    if (op1 == undefined) {
         return initialNumArr.push(value)
     }
 }
 
-
-function secondClick(value) {
-    if (op == "+" || op == "-" || op == "x" || op == "/"
+// onClick event assigned to all numbers
+// only works if operator is assigned
+// put all numbers clicked into secondNumArr
+function getSecondNum(value) {
+    if (op1 == "+" || op1 == "-" || op1 == "x" || op1 == "/"
     ) {
         return secondNumArr.push(value)
     }
 }
 
-// runs when an operator is pressed
-// makes initialNumArr into a single number value assigned to initialNum
-// assigns the selected operator to value op (makes firstClick() stop working)
-// if the secondNumArr is defined, join into a number and assign to secondNum
-// if both are defined perform the operation function and assign result to initialNum
-// set the second number array to 0 so it can be filled again
-
-function operationPressed(operator) {
-    if (op == undefined) {
-        initialNum = Number(initialNumArr.join(""));
-    }
-    op = operator;
-    if (secondNumArr.length > 0) {
-        secondNum = Number(secondNumArr.join(""))
-    }
-    if (initialNum && secondNum) {
-        initialNum = operate(initialNum, secondNum, op);
-        secondNumArr.length = 0;
-    }
-}
 
 
 
 
 
-function errorMessage() {
-    return "ERROR. PRESS CLEAR"
-}
+
+// function errorMessage() {
+//     return "ERROR. PRESS CLEAR"
+// }
 
 
-function equals() {
-    if (initialNum == undefined) {
-        return jsResult.textContent = errorMessage();
-    } else {
-        if (op == undefined) {
-            initialNum = Number(initialNumArr.join(""));
-        }
-        if (secondNumArr.length > 0) {
-            secondNum = Number(secondNumArr.join(""))
-        }
-        if (initialNum && secondNum) {
-            initialNum = operate(initialNum, secondNum, op);
-            secondNumArr.length = 0;
+// function equals() {
+//     if (initialNum == undefined) {
+//         return jsResult.textContent = errorMessage();
+//     } else {
+//         if (op1 == undefined) {
+//             initialNum = Number(initialNumArr.join(""));
+//         }
+//         if (secondNumArr.length > 0) {
+//             secondNum = Number(secondNumArr.join(""))
+//         }
+//         if (initialNum && secondNum) {
+//             initialNum = operate(initialNum, secondNum, op1);
+//             secondNumArr.length = 0;
 
-        }
-        op = undefined;
+//         }
+//         op1 = undefined;
 
-        return jsResult.textContent = initialNum;
-    }
-}
+//         return jsResult.textContent = initialNum;
+//     }
+// }
 
 // to do:
 // from top to bottom, break down what each piece of code does
