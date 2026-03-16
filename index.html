@@ -18,9 +18,9 @@
         </div>
         <div id="rowOne">
             <button id="plus" onclick="operationPressed(plusSign)" >+</button>
-            <button id="minus" onclick="clickMinus(); storeValueMinus(minusSign)">-</button>
-            <button id="mutiply" onclick="clickMultiply(); storeValueMultiply(multiplySign)">x</button>
-            <button id="divide" onclick = "clickDivide(); storeValueDivide(divideSign)">/</button>
+            <button id="minus" onclick="operationPressed(minusSign)">-</button>
+            <button id="mutiply" onclick="operationPressed(multiplySign)">x</button>
+            <button id="divide" onclick = "operationPressed(divideSign)">/</button>
         </div>
         <div id="rowTwo">
             <button id="one" onclick="firstClick(1); secondClick(1)">1</button>
@@ -30,16 +30,16 @@
         </div>
 
         <div id="rowThree">
-            <button id="five" onclick="bigClick(5)">5</button>
-            <button id="six" onclick="bigClick(6)">6</button>
-            <button id="seven" onclick="bigClick(7)">7</button>
-            <button id="eight" onclick="bigClick(8)">8</button>
+            <button id="five" onclick="firstClick(5); secondClick(5)">5</button>
+            <button id="six" onclick="firstClick(6); secondClick(6)">6</button>
+            <button id="seven" onclick="firstClick(7); secondClick(7)">7</button>
+            <button id="eight" onclick="firstClick(8); secondClick(8)">8</button>
         </div>
         <div id="rowFour">
-            <button id="nine" onclick="bigClick(9)">9</button>
-            <button id="zero" onclick="bigClick(0)">0</button>
-            <button id="clear">c</button>
-            <button id="equals" onclick="operate(initialNumber, secondaryNumber, operator)">=</button>
+            <button id="nine" onclick="firstClick(9); secondClick(9)">9</button>
+            <button id="zero" onclick="firstClick(0); secondClick(0)">0</button>
+            <button id="clear" onclick="clear()">c</button>
+            <button id="equals" onclick="equals()">=</button>
         </div>
     </div>
   
