@@ -1,63 +1,4 @@
 
-// math functions
-// used in the operation function
-const add = function (a, b) {
-    return a + b;
-}
-const subtract = function (a, b) {
-    return a - b;
-}
-const multiply = function (a, b) {
-    return a * b;
-}
-const divide = function (a, b) {
-    return a / b;
-}
-
-// decides which math function to execute based on operator, takes firstNumber and secondNumber as arguments
-// returns result as text content
-const operate = function (firstNumber, secondNumber, operator) {
-    if (operator == "+") {
-        return jsResult.textContent = add(firstNumber, secondNumber)
-    } else if (operator == "-") {
-        return jsResult.textContent = subtract(firstNumber, secondNumber)
-    } else if (operator == "x") {
-        return jsResult.textContent = multiply(firstNumber, secondNumber)
-    } else if (operator == "/") {
-        return jsResult.textContent = divide(firstNumber, secondNumber)
-    }
-
-}
-
-// onClick event assigned to operator
-// on first press - when op1 is still undefined - assigns the initialNumArr into a Number stored in initialNum; is ignored when pressed again
-// assigns the selected operator to value op1 (makes getFirstNum() stop working)
-// if the secondNumArr is defined, join into a number and assign to secondNum
-// if both are defined perform the operation function and assign result to initialNum
-// set the second number array to 0 so it can be filled again
-
-function operationPressed(operator) {
-    if (op1 == undefined) {
-        initialNum = Number(initialNumArr.join(""));
-        console.log(initialNum);
-        op1 = operator;
-    }
-    op2 = operator;
-    if (secondNumArr.length > 0) {
-        secondNum = Number(secondNumArr.join(""))
-        console.log(secondNum)
-    }
-    if (initialNum && secondNum) {
-        initialNum = operate(initialNum, secondNum, op1);
-        secondNumArr.length = 0;
-        console.log(initialNum)
-    }
-    op1 = op2;
-}
-
-// the bug:
-// 
-
 // used in onClick to select an operator
 let plusSign = "+"
 let minusSign = "-"
@@ -105,14 +46,83 @@ function getSecondNum(value) {
 
 
 
+// math functions
+// used in the operation function
+const add = function (a, b) {
+    return a + b;
+}
+const subtract = function (a, b) {
+    return a - b;
+}
+const multiply = function (a, b) {
+    return a * b;
+}
+const divide = function (a, b) {
+    return a / b;
+}
+
+// decides which math function to execute based on operator, takes firstNumber and secondNumber as arguments
+// returns result as text content
+const operate = function (firstNumber, secondNumber, operator) {
+    if (operator == "+") {
+        return jsResult.textContent = add(firstNumber, secondNumber)
+    } else if (operator == "-") {
+        return jsResult.textContent = subtract(firstNumber, secondNumber)
+    } else if (operator == "x") {
+        return jsResult.textContent = multiply(firstNumber, secondNumber)
+    } else if (operator == "/") {
+        return jsResult.textContent = divide(firstNumber, secondNumber)
+    }
+
+}
+
+// onClick event assigned to operator
+// on first press - when op1 is still undefined - assigns the initialNumArr into a Number stored in initialNum; assigns the operator to op1; is ignored when pressed again
+// assigns the selected operator to value op2 (makes getFirstNum() stop working)
+// if the secondNumArr is defined, join into a number and assign to secondNum
+// if both are defined perform the operation function and assign result to initialNum; uses the first operator pressed
+// set the second number array to 0 so it can be filled again
+// assigns the second operator pressed to be the new primary operator
+
+function operationPressed(operator) {
+    if (op1 == undefined) {
+        initialNum = Number(initialNumArr.join(""));
+        console.log(initialNum);
+        op1 = operator;
+    }
+    op2 = operator;
+    if (secondNumArr.length > 0) {
+        secondNum = Number(secondNumArr.join(""))
+        console.log(secondNum)
+    }
+    if (initialNum && secondNum) {
+        initialNum = operate(initialNum, secondNum, op1);
+        secondNumArr.length = 0;
+        console.log(initialNum)
+    }
+    op1 = op2;
+}
+
+// when the operator is pressed 
+// initialNum has value of 6
+
+
+function errorMessage() {
+    return "ERROR. PRESS CLEAR"
+}
 
 
 
+// equal sign: returns result of operation
+function equals(){
+    operationPressed(op1)
+    secondNumArr.length = 0;
+    secondNum = false;
+    return jsResult.textContent = initialNum;
 
-// function errorMessage() {
-//     return "ERROR. PRESS CLEAR"
-// }
+}
 
+// equal sign bug
 
 // function equals() {
 //     if (initialNum == undefined) {
@@ -149,7 +159,6 @@ function getSecondNum(value) {
 // make the equal sign work
 // make the display update properly
 // make the clear button
-// go through and delete junk
 // small odds and ends from instructions
 
 
