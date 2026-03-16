@@ -11,34 +11,34 @@
 <body>
     <div id="container">
         <div id="display">
-            <div id="initial">__</div>
+            <!-- <div id="initial">__</div>
             <div id="operator">__</div>
-            <div id="secondary">__</div>
+            <div id="secondary">__</div> -->
             <div id="result"></div>
         </div>
         <div id="rowOne">
-            <button id="plus" onclick="operationPressed(plusSign)" >+</button>
-            <button id="minus" onclick="operationPressed(minusSign)">-</button>
-            <button id="mutiply" onclick="operationPressed(multiplySign)">x</button>
-            <button id="divide" onclick = "operationPressed(divideSign)">/</button>
+            <button id="plus" onclick="operationPressed(plusSign); displayOp()" >+</button>
+            <button id="minus" onclick="operationPressed(minusSign); displayOp()">-</button>
+            <button id="mutiply" onclick="operationPressed(multiplySign); displayOp()">x</button>
+            <button id="divide" onclick = "operationPressed(divideSign); displayOp()">/</button>
         </div>
         <div id="rowTwo">
-            <button id="one" onclick="getFirstNum(1); getSecondNum(1)">1</button>
-            <button id="two" onclick="getFirstNum(2); getSecondNum(2)">2</button>
-            <button id="three" onclick="getFirstNum(3); getSecondNum(3)">3</button>
-            <button id="four" onclick="getFirstNum(4); getSecondNum(4)">4</button>
+            <button id="one" onclick="getFirstNum(1); getSecondNum(1); displayNum(); displayNum2()">1</button>
+            <button id="two" onclick="getFirstNum(2); getSecondNum(2); displayNum(); displayNum2()">2</button>
+            <button id="three" onclick="getFirstNum(3); getSecondNum(3); displayNum(); displayNum2()">3</button>
+            <button id="four" onclick="getFirstNum(4); getSecondNum(4); displayNum(); displayNum2()">4</button>
         </div>
 
         <div id="rowThree">
-            <button id="five" onclick="getFirstNum(5); getSecondNum(5)">5</button>
-            <button id="six" onclick="getFirstNum(6); getSecondNum(6)">6</button>
-            <button id="seven" onclick="getFirstNum(7); getSecondNum(7)">7</button>
-            <button id="eight" onclick="getFirstNum(8); getSecondNum(8)">8</button>
+            <button id="five" onclick="getFirstNum(5); getSecondNum(5); displayNum(); displayNum2()">5</button>
+            <button id="six" onclick="getFirstNum(6); getSecondNum(6); displayNum(); displayNum2()">6</button>
+            <button id="seven" onclick="getFirstNum(7); getSecondNum(7); displayNum(); displayNum2()">7</button>
+            <button id="eight" onclick="getFirstNum(8); getSecondNum(8); displayNum(); displayNum2()">8</button>
         </div>
         <div id="rowFour">
-            <button id="nine" onclick="getFirstNum(9); getSecondNum(9)">9</button>
-            <button id="zero" onclick="getFirstNum(0); getSecondNum(0)">0</button>
-            <button id="clear" onclick="clear()">c</button>
+            <button id="nine" onclick="getFirstNum(9); getSecondNum(9); displayNum(); displayNum2()">9</button>
+            <button id="zero" onclick="getFirstNum(0); getSecondNum(0); displayNum(); displayNum2()">0</button>
+            <button id="clear" onclick="window.location.reload()">c</button>
             <button id="equals" onclick="equals()">=</button>
         </div>
     </div>

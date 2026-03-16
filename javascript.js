@@ -14,8 +14,28 @@ const jsSecondaryNumber = document.querySelector("#secondary");
 
 const jsResult = document.querySelector("#result");
 
+jsResult.textContent = "Enter num";
 
 
+function displayNum() {
+    if (op1 == undefined) {
+        jsResult.textContent = Number(initialNumArr.join(""))
+    }
+}
+
+function displayOp() {
+    if (initialNumArr !== undefined) {
+        jsResult.textContent = op1;
+    }
+}
+
+function displayNum2() {
+    if (op1 !== undefined){
+        jsResult.textContent = Number(secondNumArr.join(""))
+        console.log(initialNumArr)
+        console.log(secondNumArr)
+    }
+}
 
 let initialNumArr = [];
 let secondNumArr = [];
@@ -25,10 +45,12 @@ let op1;
 let op2;
 
 
+
 // onClick event assigned to all numbers
 // does not work if operator is assigned
 // puts all numbers clicked into initialNumArr
 function getFirstNum(value) {
+    window.location.reload()
     if (op1 == undefined) {
         return initialNumArr.push(value)
     }
@@ -58,7 +80,11 @@ const multiply = function (a, b) {
     return a * b;
 }
 const divide = function (a, b) {
-    return a / b;
+    if (b==0 || b=="0"){
+        return "ERROR. PRESS CLEAR."
+    } else {
+        return a / b;
+    }
 }
 
 // decides which math function to execute based on operator, takes firstNumber and secondNumber as arguments
@@ -84,18 +110,20 @@ const operate = function (firstNumber, secondNumber, operator) {
 // set the second number array to 0 so it can be filled again
 // assigns the second operator pressed to be the new primary operator
 
+// jsInitialNumber.textContent = Number(initialNumArr.join(""));
+
 function operationPressed(operator) {
     if (op1 == undefined) {
         initialNum = Number(initialNumArr.join(""));
-        console.log(initialNum);
         op1 = operator;
+
     }
     op2 = operator;
     if (secondNumArr.length > 0) {
         secondNum = Number(secondNumArr.join(""))
         console.log(secondNum)
     }
-    if (initialNum && secondNum) {
+    if (initialNum !== undefined && secondNum !== undefined) {
         initialNum = operate(initialNum, secondNum, op1);
         secondNumArr.length = 0;
         console.log(initialNum)
@@ -103,8 +131,7 @@ function operationPressed(operator) {
     op1 = op2;
 }
 
-// when the operator is pressed 
-// initialNum has value of 6
+
 
 
 function errorMessage() {
@@ -114,57 +141,14 @@ function errorMessage() {
 
 
 // equal sign: returns result of operation
-function equals(){
+function equals() {
     operationPressed(op1)
     secondNumArr.length = 0;
     secondNum = false;
-    return jsResult.textContent = initialNum;
+    if (typeof initialNum === "number") {
+        jsResult.textContent = initialNum.toFixed(2);
+    } else {
+        jsResult.textContent = initialNum; // shows error message
+    }
 
 }
-
-// equal sign bug
-
-// function equals() {
-//     if (initialNum == undefined) {
-//         return jsResult.textContent = errorMessage();
-//     } else {
-//         if (op1 == undefined) {
-//             initialNum = Number(initialNumArr.join(""));
-//         }
-//         if (secondNumArr.length > 0) {
-//             secondNum = Number(secondNumArr.join(""))
-//         }
-//         if (initialNum && secondNum) {
-//             initialNum = operate(initialNum, secondNum, op1);
-//             secondNumArr.length = 0;
-
-//         }
-//         op1 = undefined;
-
-//         return jsResult.textContent = initialNum;
-//     }
-// }
-
-// to do:
-// from top to bottom, break down what each piece of code does
-// write out in detail a specific bug
-// write out in detail the logic path that is causing the bug
-// fix the logic
-// repeat until there are no more bugs 
-
-
-
-
-// to do:
-// make the equal sign work
-// make the display update properly
-// make the clear button
-// small odds and ends from instructions
-
-
-
-
-// doesn't work yet
-// function clear() {
-//     return location.reload(true);
-// }
